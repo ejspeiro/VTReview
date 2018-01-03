@@ -1,0 +1,108 @@
+%%
+%% This is file `vtreview.sty'
+%%
+%% Written by Eduardo Sanchez
+%% eduardo.sanchez@bsc.es
+%%
+\ProvidesPackage{vtreview}[2017/11/08 v0.1 verbal tenses consistency reviewing]
+
+\RequirePackage{color}
+\RequirePackage{soul}
+\RequirePackage[color]{changebar}
+\RequirePackage[colorinlistoftodos]{todonotes}
+
+%%
+%% Default behavior of the package.
+%%
+
+% Verb marks.
+\newcommand{\SiPr}[1]{#1}
+\newcommand{\PrPr}[1]{#1}
+\newcommand{\PePr}[1]{#1}
+\newcommand{\ImSe}[1]{#1}
+
+\newcommand{\SiPa}[1]{#1}
+
+% Paragraph marks.
+\newenvironment{SiPrP}{}{}
+\newenvironment{PrPrP}{}{}
+\newenvironment{PePrP}{}{}
+\newenvironment{ImSeP}{}{}
+
+\newenvironment{SiPaP}{}{}
+
+% Verbal tenses legend.
+\newcommand{\VerbalTensesLegend}{
+\todo[inline, color=white!40, nolist]{\textbf{Verbal tenses: No marks have been added}.}
+}
+
+\newif\if@addedSiPr\@addedSiPrtrue
+
+\DeclareOption{off}{
+  \renewcommand{\SiPr}[1]{#1}
+  \renewcommand{\PrPr}[1]{#1}
+  \renewcommand{\PePr}[1]{#1}
+  \renewcommand{\ImSe}[1]{#1}
+  
+  \renewcommand{\SiPa}[1]{#1}
+  
+  \renewenvironment{SiPrP}{}{}
+  \renewenvironment{ImSeP}{}{}
+  \renewcommand{\VerbalTensesLegend}{
+\todo[inline, color=white!40, nolist]{\textbf{Verbal tenses: No marks have been added}.}
+  }
+}
+
+\DeclareOption{on}{
+  \renewcommand{\SiPr}[1]{
+    \sethlcolor{yellow}\hl{#1}
+  }
+  \renewcommand{\PrPr}[1]{
+    \sethlcolor{orange}\hl{#1}
+  }
+  \renewcommand{\PePr}[1]{
+    \sethlcolor{green}\hl{#1}
+  }
+  \renewcommand{\ImSe}[1]{
+    \sethlcolor{magenta}\hl{#1}
+  }
+  
+  \renewcommand{\SiPa}[1]{
+    \sethlcolor{lime}\hl{#1}
+  }
+  
+  \setlength\changebarsep{10pt}
+  \setlength\changebarwidth{6pt}
+  \renewenvironment{SiPrP}{
+    \cbcolor{yellow}
+    \cbstart
+  }{
+    \cbend
+  }
+  \renewenvironment{SiPaP}{
+    \cbcolor{lime}
+    \cbstart
+  }{
+    \cbend
+  }
+  
+  \newcommand{\addSiPr}{\SiPr{Simple present}}
+  \newcommand{\addPrPr}{\PrPr{Progressive present}}
+  \newcommand{\addPePr}{\PePr{Perfect present}}
+  \newcommand{\addImSe}{\ImSe{Imperative}}
+  
+  \newcommand{\addSiPa}{\SiPa{Simple past}}
+      
+  \renewcommand{\VerbalTensesLegend}{
+
+  \todo[inline, color=white!40, nolist]{\textbf{Verbal tenses: 
+			\addSiPr, \addSiPa
+  }.}
+  }
+}
+
+\ExecuteOptions{off}
+
+\ProcessOptions\relax
+
+\endinput
