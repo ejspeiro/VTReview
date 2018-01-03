@@ -4,7 +4,7 @@
 %% Written by Eduardo Sanchez
 %% eduardo.sanchez@bsc.es
 %%
-\ProvidesPackage{vtreview}[2017/11/08 v0.1 verbal tenses consistency reviewing]
+\ProvidesPackage{vtreview}[2018/01/03 v0.2 verbal tenses consistency reviewing]
 
 \RequirePackage{color}
 \RequirePackage{soul}
@@ -43,9 +43,9 @@
   \renewcommand{\PrPr}[1]{#1}
   \renewcommand{\PePr}[1]{#1}
   \renewcommand{\ImSe}[1]{#1}
-  
+
   \renewcommand{\SiPa}[1]{#1}
-  
+
   \renewenvironment{SiPrP}{}{}
   \renewenvironment{ImSeP}{}{}
   \renewcommand{\VerbalTensesLegend}{
@@ -66,11 +66,11 @@
   \renewcommand{\ImSe}[1]{
     \sethlcolor{magenta}\hl{#1}
   }
-  
+
   \renewcommand{\SiPa}[1]{
     \sethlcolor{lime}\hl{#1}
   }
-  
+
   \setlength\changebarsep{10pt}
   \setlength\changebarwidth{6pt}
   \renewenvironment{SiPrP}{
@@ -85,17 +85,17 @@
   }{
     \cbend
   }
-  
+
   \newcommand{\addSiPr}{\SiPr{Simple present}}
   \newcommand{\addPrPr}{\PrPr{Progressive present}}
   \newcommand{\addPePr}{\PePr{Perfect present}}
   \newcommand{\addImSe}{\ImSe{Imperative}}
-  
+
   \newcommand{\addSiPa}{\SiPa{Simple past}}
-      
+
   \renewcommand{\VerbalTensesLegend}{
 
-  \todo[inline, color=white!40, nolist]{\textbf{Verbal tenses: 
+  \todo[inline, color=white!40, nolist]{\textbf{Verbal tenses:
 			\addSiPr, \addSiPa
   }.}
   }
